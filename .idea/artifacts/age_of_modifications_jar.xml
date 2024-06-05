@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="age.of.modifications:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/age_of_modifications_jar</output-path>
+    <root id="archive" name="age.of.modifications.jar">
+      <element id="module-output" name="age.of.modifications" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
