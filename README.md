@@ -2,7 +2,8 @@
 ### /!\\ Warning! This project is in its alpha stage. You will find bugs, and the modding API is currently incomplete. /!\\
 
 # Goodbye old jar modding days!
-![bad logo lol](https://imgur.com/a/6DrKHd1)
+![bad logo lol](https://gitlab.com/age-of-modifications/age-of-modifications/-/blob/master/aom.png)
+
 Welcome to Age of Modifications (AoM), a modloader designed to streamline the modding experience for Age of History 2. AoM helps modders to create, share, and enjoy a more intricate and comprehensive modding ecosystem.
 
 ## Features
