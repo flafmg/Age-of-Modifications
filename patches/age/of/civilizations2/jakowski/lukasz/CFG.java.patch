@@ -1,0 +1,6 @@
+--- a/age/of/civilizations2/jakowski/lukasz/CFG.java
++++ b/age/of/civilizations2/jakowski/lukasz/CFG.java
+@@ -2,0 +3 @@
++import age.of.modifications.flafmg.mod.ModManager;
+@@ -29,0 +31 @@
++   protected static ModManager modManager;

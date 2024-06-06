@@ -1,0 +1,40 @@
+--- a/age/of/civilizations2/jakowski/lukasz/Menu_InitGame.java
++++ b/age/of/civilizations2/jakowski/lukasz/Menu_InitGame.java
+@@ -19 +19 @@
+-   private int iNumOfSteps = 33;
++   private int iNumOfSteps = 34;
+@@ -21,0 +22 @@
++   private int loadedMods = 0;
+@@ -92 +93,6 @@
+-            SteamManager.init();
++            //added this for debug pouposes ONLY
++            try{
++               SteamManager.init();
++            } catch (Exception e){
++               e.printStackTrace();
++            }
+@@ -480,0 +487,20 @@
++            //load mods
++            if(CFG.modManager.modPaths == null || CFG.modManager.modPaths.length == 0) {
++                this.iStepID++;
++                return;
++            }
++            CFG.sLoading = "Loading Mods "
++                    + " [#"
++                    + (loadedMods + 1)
++                    + "/"
++                    + CFG.modManager.modPaths.length
++                    + "]: "
++                    + CFG.modManager.modPaths[loadedMods].getName()
++                    + " - ";
++            CFG.modManager.loadMod(CFG.modManager.modPaths[loadedMods].getAbsolutePath());
++            loadedMods++;
++
++            if(loadedMods >= CFG.modManager.modPaths.length){
++               this.iStepID++;
++            }
++         } else if (this.iStepID == 33 + CFG.map.getMapNumOfProvinces(CFG.map.getActiveMapID()) * 2) {
+@@ -499 +525,2 @@
+-
++            CFG.modManager.allLoaded = true;
++            CFG.modManager.callOnPostInit();

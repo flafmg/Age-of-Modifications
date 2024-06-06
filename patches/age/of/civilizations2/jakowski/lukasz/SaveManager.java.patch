@@ -1,0 +1,4 @@
+--- a/age/of/civilizations2/jakowski/lukasz/SaveManager.java
++++ b/age/of/civilizations2/jakowski/lukasz/SaveManager.java
+@@ -46,0 +47 @@
++         CFG.modManager.callOnSave();

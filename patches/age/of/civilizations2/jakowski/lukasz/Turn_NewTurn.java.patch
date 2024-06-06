@@ -1,0 +1,6 @@
+--- a/age/of/civilizations2/jakowski/lukasz/Turn_NewTurn.java
++++ b/age/of/civilizations2/jakowski/lukasz/Turn_NewTurn.java
+@@ -21,0 +22 @@
++      CFG.modManager.callOnTurn();
+@@ -22,0 +24 @@
++      CFG.modManager.callOnTurnFinished();

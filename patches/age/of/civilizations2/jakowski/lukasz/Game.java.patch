@@ -1,0 +1,7 @@
+--- a/age/of/civilizations2/jakowski/lukasz/Game.java
++++ b/age/of/civilizations2/jakowski/lukasz/Game.java
+@@ -3279,0 +3280,4 @@
++
++      if(CFG.modManager.allLoaded){
++          CFG.modManager.callOnUpdate();
++      }

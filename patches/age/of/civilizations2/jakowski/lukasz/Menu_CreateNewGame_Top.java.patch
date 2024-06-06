@@ -1,0 +1,11 @@
+--- a/age/of/civilizations2/jakowski/lukasz/Menu_CreateNewGame_Top.java
++++ b/age/of/civilizations2/jakowski/lukasz/Menu_CreateNewGame_Top.java
+@@ -575 +575 @@
+-         case 4:
++         case 4: {
+@@ -590 +590,2 @@
+-         case 5:
++         }
++         case 5: {
+@@ -603,0 +605 @@
++         }

@@ -1,0 +1,17 @@
+--- a/age/of/civilizations2/jakowski/lukasz/Commands.java
++++ b/age/of/civilizations2/jakowski/lukasz/Commands.java
+@@ -2,0 +3 @@
++import age.of.modifications.flafmg.mod.ModManager;
+@@ -52,0 +54,10 @@
++               if(tempCommand[0].equals("reload")){
++                  addMessage("reloading mods..");
++                  CFG.toast.setInView("Reloading");
++
++                  CFG.modManager = new ModManager();
++                  for(int i = 0; i < CFG.modManager.modPaths.length; i++){
++                     CFG.modManager.loadMod(CFG.modManager.modPaths[i].getPath());
++                  }
++                  return;
++               }
+@@ -830 +840,0 @@
+-
