@@ -54,7 +54,7 @@ public abstract class Mod extends ModBase {
         return aomVersion;
     }
 
-    public void setAomVersion(int aomVersion) {
+    protected void setAomVersion(int aomVersion) {
         this.aomVersion = aomVersion;
     }
 }
