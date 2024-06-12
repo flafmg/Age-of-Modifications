@@ -18,7 +18,7 @@ Welcome to Age of Modifications (AoM), a modloader designed to streamline the mo
 1. **Download the Patcher** from our [releases page](https://gitlab.com/age-of-modifications/age-of-modifications/-/releases).
 2. **Provide your copy of Age of History**.
 3. **Run the Patcher** to apply patches and integrate our modding API.
-4. **Execute the new .jar file** created by the patcher.
+4. **Execute the new 'AoM.exe' file** created by the patcher.
 
 ## Getting Started with Modding
 
