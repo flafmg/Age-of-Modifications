@@ -1,0 +1,15 @@
+--- a/age/of/civilizations2/jakowski/lukasz/Civilization.java
++++ b/age/of/civilizations2/jakowski/lukasz/Civilization.java
+@@ -2,0 +3,2 @@
++import age.of.modifications.flafmg.event.*;
++import age.of.modifications.flafmg.event.game.civilization.army.*;
+@@ -1131,0 +1134,9 @@
++               //aom
++               RequestRecruitArmyEvent requestRecruitArmyEvent = new RequestRecruitArmyEvent(this, CFG.game.getProvince(nProvinceID), nArmy);
++               EventManager.dispatchEvent(requestRecruitArmyEvent);
++               if(requestRecruitArmyEvent.isCancelled()){
++                  return false;
++               }
++               nArmy = requestRecruitArmyEvent.getArmySize();
++               nProvinceID = requestRecruitArmyEvent.getProvince().getProvinceID();
++               //aom

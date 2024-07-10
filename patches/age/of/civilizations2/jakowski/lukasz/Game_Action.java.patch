@@ -1,0 +1,44 @@
+--- a/age/of/civilizations2/jakowski/lukasz/Game_Action.java
++++ b/age/of/civilizations2/jakowski/lukasz/Game_Action.java
+@@ -2,0 +3,2 @@
++import age.of.modifications.flafmg.event.*;
++import age.of.modifications.flafmg.event.game.civilization.army.*;
+@@ -986 +988,2 @@
+-
++                     //army attack goes here
++                     System.out.println("Test!");
+@@ -5142 +5144,0 @@
+-
+@@ -5144,0 +5147,10 @@
++            //aom
++            RequestMoveArmyEvent requestMoveArmyEvent = new RequestMoveArmyEvent(CFG.game.getCiv(iCivID), CFG.game.getProvince(fromProvinceID), CFG.game.getProvince(toProvinceID), nNumOfUnits);
++            EventManager.dispatchEvent(requestMoveArmyEvent);
++            if (requestMoveArmyEvent.isCancelled()) {
++               return false;
++            }
++            fromProvinceID = requestMoveArmyEvent.getFromProvince().getProvinceID();
++            toProvinceID = requestMoveArmyEvent.getToProvince().getProvinceID();
++            nNumOfUnits = requestMoveArmyEvent.getArmySize();
++            //aom
+@@ -5374,0 +5387,11 @@
++      //aom
++      RecruitArmyEvent recruitArmyEvent = new RecruitArmyEvent(CFG.game.getCiv(nCivID), CFG.game.getProvince(nProvinceID), nNumOfUnits);
++      EventManager.dispatchEvent(recruitArmyEvent);
++      if(recruitArmyEvent.isCancelled()){
++         return;
++      }
++      nProvinceID = recruitArmyEvent.getProvince().getProvinceID();
++      nNumOfUnits = recruitArmyEvent.getArmySize();
++      nCivID = recruitArmyEvent.getRequesterCiv().getCivID();
++      //aom
++
+@@ -5629,0 +5653,9 @@
++         //aom
++         DisbandArmyEvent disbandArmyEvent = new DisbandArmyEvent(CFG.game.getCiv(nCivID), CFG.game.getProvince(nProvinceID), nNumOfUnits);
++         EventManager.dispatchEvent(disbandArmyEvent);
++         if(disbandArmyEvent.isCancelled()){
++            return;
++         }
++         nProvinceID = disbandArmyEvent.getProvince().getProvinceID();
++         nNumOfUnits = disbandArmyEvent.getArmySize();
++         //aom

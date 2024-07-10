@@ -1,0 +1,8 @@
+--- a/age/of/civilizations2/jakowski/lukasz/RecruitArmy_Request.java
++++ b/age/of/civilizations2/jakowski/lukasz/RecruitArmy_Request.java
+@@ -2,0 +3,3 @@
++import age.of.modifications.flafmg.event.*;
++import age.of.modifications.flafmg.event.game.civilization.army.*;
++
+@@ -19 +21,0 @@
+-

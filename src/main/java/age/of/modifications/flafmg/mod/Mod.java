@@ -8,8 +8,6 @@ public abstract class Mod extends ModBase {
     private String version;
     private int aomVersion;
 
-    public boolean loaded;
-
     protected String getMain() {
         return main;
     }

@@ -13,11 +13,9 @@ import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 
 public class ModManager {
-    private static List<Mod> loadedMods = new ArrayList<>();
-    private static int AoMVersion = 0;
-
-    public File[] modPaths;
-    public boolean allLoaded;
+    private static final List<Mod> loadedMods = new ArrayList<>();
+    private static final int AoMVersion = 0;
+    public boolean loaded;
 
     public ModManager() {
         unloadAll();
@@ -26,19 +24,16 @@ public class ModManager {
 
     private void startupMods() {
         File modsFolder = new File("mods");
-        if (!modsFolder.exists()) {
-            if (modsFolder.mkdirs()) {
-                System.out.println("[AoM] Mods folder created at " + modsFolder.getAbsolutePath());
-                Commands.addMessage("[AoM] Mods folder created at " + modsFolder.getAbsolutePath());
-            } else {
-                System.err.println("[AoM] Error: Failed to create mods folder at " + modsFolder.getAbsolutePath());
-                Commands.addMessage("[AoM] Error: Failed to create mods folder at " + modsFolder.getAbsolutePath());
-                return;
-            }
+        if (!modsFolder.exists() && !modsFolder.mkdirs()) {
+            System.err.println("[AoM] Error: Failed to create mods folder at " + modsFolder.getAbsolutePath());
+            Commands.addMessage("[AoM] Error: Failed to create mods folder at " + modsFolder.getAbsolutePath());
+            return;
         }
-        modPaths = modsFolder.listFiles((dir, name) -> name.toLowerCase().endsWith(".jar"));
     }
-
+    public static File[] getModPaths(){
+        File modsFolder = new File("mods");
+        return modsFolder.listFiles((dir, name) -> name.toLowerCase().endsWith(".jar"));
+    }
     public void loadMod(String jarPath) {
         File jarFile = new File(jarPath);
         if (!jarFile.exists()) {
@@ -71,7 +66,8 @@ public class ModManager {
             Map<String, Object> yamlData = yaml.load(yamlInputStream);
 
             String mainClass = (String) yamlData.get("mainClass");
-            String name = (String) yamlData.getOrDefault("name", jarFile.getName().replace(".jar", ""));
+            String name = (String) yamlData.get("name");
+
             String description = (String) yamlData.getOrDefault("description", "");
             String author = (String) yamlData.getOrDefault("author", "???");
             String version = (String) yamlData.getOrDefault("version", "???");
@@ -151,7 +147,6 @@ public class ModManager {
         if (mod != null) {
             mod.onDisable();
             loadedMods.remove(mod);
-            mod = null;
         }
     }
 

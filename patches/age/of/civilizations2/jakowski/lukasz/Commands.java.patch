@@ -2,16 +2,23 @@
 +++ b/age/of/civilizations2/jakowski/lukasz/Commands.java
 @@ -2,0 +3 @@
 +import age.of.modifications.flafmg.mod.ModManager;
-@@ -52,0 +54,10 @@
+@@ -3,0 +5,2 @@
++
++import java.io.*;
+@@ -52,0 +56,14 @@
 +               if(tempCommand[0].equals("reload")){
 +                  addMessage("reloading mods..");
 +                  CFG.toast.setInView("Reloading");
 +
 +                  CFG.modManager = new ModManager();
-+                  for(int i = 0; i < CFG.modManager.modPaths.length; i++){
-+                     CFG.modManager.loadMod(CFG.modManager.modPaths[i].getPath());
++
++                  if (CFG.modManager.getModPaths() != null) {
++                     for (File modPath : CFG.modManager.getModPaths()) {
++                        CFG.modManager.loadMod(modPath.getPath());
++                     }
 +                  }
 +                  return;
 +               }
-@@ -830 +840,0 @@
++
+@@ -830 +846,0 @@
 -

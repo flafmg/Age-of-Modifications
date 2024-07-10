@@ -1,21 +1,30 @@
 --- a/age/of/civilizations2/jakowski/lukasz/Menu_InitGame.java
 +++ b/age/of/civilizations2/jakowski/lukasz/Menu_InitGame.java
-@@ -19 +19 @@
+@@ -3,0 +4 @@
++import age.of.modifications.flafmg.mod.*;
+@@ -12,0 +14,2 @@
++
++import java.io.*;
+@@ -19 +22 @@
 -   private int iNumOfSteps = 33;
 +   private int iNumOfSteps = 34;
-@@ -21,0 +22 @@
+@@ -21,0 +25,2 @@
 +   private int loadedMods = 0;
-@@ -92 +93,6 @@
++   private File[] modPaths = ModManager.getModPaths();
+@@ -29 +33,0 @@
+-
+@@ -92 +96,7 @@
 -            SteamManager.init();
-+            //added this for debug pouposes ONLY
++            //AOM: added this for debug pouposes ONLY,
++            //this will disable the steam check so i dont need to be with steam open all the time
 +            try{
 +               SteamManager.init();
 +            } catch (Exception e){
 +               e.printStackTrace();
 +            }
-@@ -480,0 +487,20 @@
+@@ -480,0 +491,21 @@
 +            //load mods
-+            if(CFG.modManager.modPaths == null || CFG.modManager.modPaths.length == 0) {
++            if(modPaths == null || modPaths.length == 0) {
 +                this.iStepID++;
 +                return;
 +            }
@@ -23,18 +32,19 @@
 +                    + " [#"
 +                    + (loadedMods + 1)
 +                    + "/"
-+                    + CFG.modManager.modPaths.length
++                    + modPaths.length
 +                    + "]: "
-+                    + CFG.modManager.modPaths[loadedMods].getName()
++                    + modPaths[loadedMods].getName()
 +                    + " - ";
-+            CFG.modManager.loadMod(CFG.modManager.modPaths[loadedMods].getAbsolutePath());
++            CFG.modManager.loadMod(modPaths[loadedMods].getAbsolutePath());
 +            loadedMods++;
 +
-+            if(loadedMods >= CFG.modManager.modPaths.length){
++            if(loadedMods >= modPaths.length){
 +               this.iStepID++;
 +            }
++
 +         } else if (this.iStepID == 33 + CFG.map.getMapNumOfProvinces(CFG.map.getActiveMapID()) * 2) {
-@@ -499 +525,2 @@
+@@ -499 +530,2 @@
 -
-+            CFG.modManager.allLoaded = true;
++            CFG.modManager.loaded = true;
 +            CFG.modManager.callOnPostInit();
