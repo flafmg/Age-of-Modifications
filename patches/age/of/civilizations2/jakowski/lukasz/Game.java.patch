@@ -1,7 +1,20 @@
 --- a/age/of/civilizations2/jakowski/lukasz/Game.java
 +++ b/age/of/civilizations2/jakowski/lukasz/Game.java
-@@ -3279,0 +3280,4 @@
+@@ -2,0 +3,2 @@
++import age.of.modifications.flafmg.event.*;
++import age.of.modifications.flafmg.event.game.civilization.*;
+@@ -3279,0 +3282,4 @@
 +
 +      if(CFG.modManager.loaded){
 +          CFG.modManager.callOnUpdate();
 +      }
+@@ -21580,0 +21587,7 @@
++               // aom
++               DeclareWarEvent declareWarEvent = new DeclareWarEvent(CFG.game.getCiv(iAgressorCivID), CFG.game.getCiv(iCivB));
++               EventManager.dispatchEvent(declareWarEvent);
++               if (declareWarEvent.isCancelled()) {
++                   return;
++               }
++               // aom
+@@ -21585,0 +21599 @@
++

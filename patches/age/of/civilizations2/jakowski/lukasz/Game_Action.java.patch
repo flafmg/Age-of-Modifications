@@ -3,13 +3,48 @@
 @@ -2,0 +3,2 @@
 +import age.of.modifications.flafmg.event.*;
 +import age.of.modifications.flafmg.event.game.civilization.army.*;
-@@ -986 +988,2 @@
+@@ -720 +722,11 @@
 -
-+                     //army attack goes here
-+                     System.out.println("Test!");
-@@ -5142 +5144,0 @@
++                     //aom
++                     Civilization attackingCiv = CFG.game.getCiv(CFG.game.getProvince(this.currentMoveUnits.getMoveUnits(0).getFromProvinceID()).getCivID());
++                     Civilization defendingCiv = CFG.game.getCiv(CFG.game.getProvince(this.currentMoveUnits.getMoveUnits(0).getToProvinceID()).getCivID());
++                     Province battleProvince = CFG.game.getProvince(this.currentMoveUnits.getMoveUnits(0).getToProvinceID());
++                     ArmyAttackEvent armyAttackEvent = new ArmyAttackEvent(attackingCiv, defendingCiv, battleProvince, attackingArmy, CFG.game.getProvinceArmy(battleProvince.getProvinceID()));
++                     EventManager.dispatchEvent(armyAttackEvent);
++                     if(armyAttackEvent.isCancelled()){
++                        return;
++                     }
++                     attackingArmy = armyAttackEvent.getAttackingArmy();
++                     //aom
+@@ -986 +998,11 @@
 -
-@@ -5144,0 +5147,10 @@
++                     //aom
++                     Civilization attackingCiv = CFG.game.getCiv(CFG.game.getProvince(this.currentMoveUnits.getMoveUnits(0).getFromProvinceID()).getCivID());
++                     Civilization defendingCiv = CFG.game.getCiv(CFG.game.getProvince(this.currentMoveUnits.getMoveUnits(0).getToProvinceID()).getCivID());
++                     Province battleProvince = CFG.game.getProvince(this.currentMoveUnits.getMoveUnits(0).getToProvinceID());
++                     ArmyAttackEvent armyAttackEvent = new ArmyAttackEvent(attackingCiv, defendingCiv, battleProvince, attackingArmy, CFG.game.getProvinceArmy(battleProvince.getProvinceID()));
++                     EventManager.dispatchEvent(armyAttackEvent);
++                     if(armyAttackEvent.isCancelled()){
++                        return;
++                     }
++                     attackingArmy = armyAttackEvent.getAttackingArmy();
++                     //aom
+@@ -4049 +4071,11 @@
+-
++               //aom
++               Civilization attackingCiv = CFG.game.getCiv(CFG.game.getProvince(this.currentMoveUnits.getMoveUnits(0).getFromProvinceID()).getCivID());
++               Civilization defendingCiv = CFG.game.getCiv(CFG.game.getProvince(this.currentMoveUnits.getMoveUnits(0).getToProvinceID()).getCivID());
++               Civilization winnerCiv = CFG.reportData.attackersWon ? attackingCiv : defendingCiv;
++               Civilization loserCiv = !CFG.reportData.attackersWon ? attackingCiv : defendingCiv;
++               Province battleProvince = CFG.game.getProvince(this.currentMoveUnits.getMoveUnits(0).getToProvinceID());
++               ArmyAttackResultEvent armyAttackResultEvent = new ArmyAttackResultEvent(winnerCiv, loserCiv, battleProvince, CFG.reportData);
++               EventManager.dispatchEvent(armyAttackResultEvent);
++               //readonly event so no canceling
++
++               //aom
+@@ -5142 +5173,0 @@
+-
+@@ -5144,0 +5176,10 @@
 +            //aom
 +            RequestMoveArmyEvent requestMoveArmyEvent = new RequestMoveArmyEvent(CFG.game.getCiv(iCivID), CFG.game.getProvince(fromProvinceID), CFG.game.getProvince(toProvinceID), nNumOfUnits);
 +            EventManager.dispatchEvent(requestMoveArmyEvent);
@@ -20,7 +55,7 @@
 +            toProvinceID = requestMoveArmyEvent.getToProvince().getProvinceID();
 +            nNumOfUnits = requestMoveArmyEvent.getArmySize();
 +            //aom
-@@ -5374,0 +5387,11 @@
+@@ -5374,0 +5416,11 @@
 +      //aom
 +      RecruitArmyEvent recruitArmyEvent = new RecruitArmyEvent(CFG.game.getCiv(nCivID), CFG.game.getProvince(nProvinceID), nNumOfUnits);
 +      EventManager.dispatchEvent(recruitArmyEvent);
@@ -32,7 +67,7 @@
 +      nCivID = recruitArmyEvent.getRequesterCiv().getCivID();
 +      //aom
 +
-@@ -5629,0 +5653,9 @@
+@@ -5629,0 +5682,9 @@
 +         //aom
 +         DisbandArmyEvent disbandArmyEvent = new DisbandArmyEvent(CFG.game.getCiv(nCivID), CFG.game.getProvince(nProvinceID), nNumOfUnits);
 +         EventManager.dispatchEvent(disbandArmyEvent);
