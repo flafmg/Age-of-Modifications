@@ -22,9 +22,7 @@ Welcome to Age of Modifications (AoM), a modloader designed to streamline the mo
 
 ## Getting Started with Modding
 
-1. **Learn the API**: Familiarize yourself with the AoM modding API to understand how to develop your mods.
-2. **Create Mods**: Develop your mods using the API, ensuring they do not conflict with the base game or other mods.
-3. **Share with the Community**: Upload your mods to community forums or repositories to share with other players.
+1. **Read our [Wiki](https://gitlab.com/age-of-modifications/age-of-modifications/-/wikis/home)**
 
 ## Contribution
 
